@@ -1,0 +1,199 @@
+/* Dashboard.css */
+/* Secret key screen styles */
+.dashboard-secret {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  text-align: center;
+}
+
+.dashboard-secret h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: #333;
+}
+
+.secret-input {
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+.secret-btn {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.secret-btn:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 0.5rem;
+}
+/* Global styling for the Dashboard page */
+.dashboard {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: #f2f4f8;
+}
+
+/* Heading styling */
+.dashboard h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+/* Each section styled as a premium card */
+.dashboard-section {
+  background: linear-gradient(135deg, #ffffff, #f7f9fc);
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Section heading */
+.dashboard-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  color: #34495e;
+  border-bottom: 2px solid #e0e6ed;
+  padding-bottom: 0.5rem;
+}
+
+/* Form styling inside each section */
+.dashboard-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dashboard-section form label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #2c3e50;
+}
+
+.dashboard-section form input,
+.dashboard-section form textarea,
+.dashboard-section form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dfe4ea;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-section form input:focus,
+.dashboard-section form textarea:focus,
+.dashboard-section form select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+/* Primary button styling for forms */
+.dashboard-section form button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  align-self: flex-start;
+}
+
+.dashboard-section form button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Delete button styling for individual items */
+.delete-button {
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  align-self: flex-start;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Delete All Data button styling */
+.delete-all-button {
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 2rem auto;
+  display: block;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.delete-all-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 1rem;
+  }
+
+  .dashboard h1 {
+    font-size: 2.5rem;
+  }
+
+  .dashboard-section {
+    padding: 1.5rem;
+  }
+
+  .dashboard-section h2 {
+    font-size: 1.75rem;
+  }
+}

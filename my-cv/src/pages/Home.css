@@ -1,0 +1,98 @@
+/* Ensure a full-screen hero background */
+.home-container {
+    width: 100%;
+    height: 100vh;
+    /* Replace the URL below with your desired background image */
+    background: url('https://source.unsplash.com/random/1920x1080?resume') no-repeat center center/cover;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Dark overlay to enhance text readability */
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Content container centered within the hero */
+  .hero-content {
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  /* Hero title */
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  
+  /* Hero description paragraph */
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+  
+  /* Button group styling */
+  .button-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  /* Common button styles */
+  .btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Primary button styling */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Secondary button styling */
+  .btn-secondary {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #1e7e34;
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.5rem;
+    }
+    .hero-content p {
+      font-size: 1rem;
+    }
+    .btn {
+      padding: 12px 25px;
+      font-size: 0.9rem;
+    }
+  }
+  
