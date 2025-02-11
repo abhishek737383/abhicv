@@ -93,34 +93,86 @@ const PublicCV = () => {
     }
     return `${startYear} - Present`;
   };
-
-  // Generate PDF using html2canvas and jsPDF.
   const handleDownloadPDF = () => {
-    const cvElement = document.querySelector('.cv-container');
-    html2canvas(cvElement, {
-      scale: 7, // Increase scale for higher resolution output
-      useCORS: true,
-      backgroundColor: '#ffffff'
+    // Select the original CV wrapper element
+    const originalElement = document.querySelector('.cv-premium-wrapper');
+    
+    // Clone the element to avoid modifying the on-screen version
+    const clone = originalElement.cloneNode(true);
+  
+    // Force desktop styling on the clone
+    clone.classList.add('force-desktop');
+    clone.style.width = '1200px';      // Force a desktop width
+    clone.style.maxWidth = 'none';
+    
+    // Remove the PDF download button from the clone so it doesn't appear in the PDF
+    const pdfButton = clone.querySelector('.pdf-button-container');
+    if (pdfButton) {
+      pdfButton.remove();
+    }
+    
+    // Position the clone off-screen so it does not affect the layout
+    clone.style.position = 'absolute';
+    clone.style.top = '-10000px';
+    clone.style.left = '0';
+    document.body.appendChild(clone);
+  
+    // Use html2canvas to capture the clone with a high scale (for HD quality)
+    html2canvas(clone, {
+      scale: 7,               // High scale for HD quality (adjust as needed)
+      useCORS: true,          // Enable cross-origin images
+      backgroundColor: '#fff' // Ensure a white background
     }).then(canvas => {
+      // Convert the canvas to an image
       const imgData = canvas.toDataURL('image/jpeg', 1);
+      
+      // Create a jsPDF instance with A4 page size in portrait mode
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
-      const imgProps = pdf.getImageProperties(imgData);
-      const ratio = imgProps.width / imgProps.height;
-      let width = pdfWidth;
-      let height = pdfWidth / ratio;
-      if (height > pdfHeight) {
-        height = pdfHeight;
-        width = pdfHeight * ratio;
+  
+      // Calculate the image dimensions for the PDF
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
+      const ratio = canvasWidth / canvasHeight;
+      const imgWidth = pdfWidth;
+      const imgHeight = pdfWidth / ratio;
+  
+      // If the content fits on one page, add it directly; otherwise, split into multiple pages.
+      if (imgHeight <= pdfHeight) {
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+      } else {
+        let position = 0;
+        let heightLeft = imgHeight;
+    
+        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pdfHeight;
+    
+        while (heightLeft > 0) {
+          position = heightLeft - imgHeight;
+          pdf.addPage();
+          pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight);
+          heightLeft -= pdfHeight;
+        }
       }
-      const marginX = (pdfWidth - width) / 2;
-      pdf.addImage(imgData, 'JPEG', marginX, 10, width, height);
+      
+      // Save the PDF file
       pdf.save('CV.pdf');
+  
+      // Clean up: remove the off-screen clone from the document
+      document.body.removeChild(clone);
+      
       alert("PDF downloaded successfully!");
+    }).catch(err => {
+      console.error("Error generating PDF:", err);
+      // Clean up the clone even if there’s an error
+      document.body.removeChild(clone);
     });
   };
-
+  
+  
+      
+  
   // Destructure the CV data for easy access.
   const {
     personal,

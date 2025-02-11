@@ -248,6 +248,19 @@ body {
   font-weight: 600;
 }
 
+/* Force desktop view regardless of screen width */
+.force-desktop {
+  width: 1200px !important;
+  max-width: none !important;
+}
+
+/* Override mobile flex-direction if needed */
+.force-desktop .cv-container {
+  flex-direction: row !important;
+}
+
+/* (Optionally add any other overrides needed for desktop view) */
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .cv-container {

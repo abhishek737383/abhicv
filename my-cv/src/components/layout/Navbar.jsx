@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { AuthContext } from '../../context/authContext';
 import './Navbar.css'; // Import the CSS file
 
@@ -7,18 +7,18 @@ import './Navbar.css'; // Import the CSS file
  * Navbar component that displays navigation links and login/logout options.
  */
 const Navbar = () => {
-  const { token, logout } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { token } = useContext(AuthContext);
+  // const navigate = useNavigate();
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   /**
    * Handle logout action, close the mobile menu if open, and navigate to home.
    */
-  const handleLogout = () => {
-    logout();
-    setMobileMenuOpen(false);
-    navigate('/');
-  };
+  // const handleLogout = () => {
+  //   logout();
+  //   setMobileMenuOpen(false);
+  //   navigate('/');
+  // };
 
   /**
    * Toggle the mobile menu open/close state.

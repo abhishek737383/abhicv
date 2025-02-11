@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with a base URL for the backend API
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: 'https://abhicvmake.onrender.com/api'
 });
 
 // Add a request interceptor to include the JWT token if it exists
